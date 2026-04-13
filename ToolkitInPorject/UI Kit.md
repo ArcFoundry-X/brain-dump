@@ -10,4 +10,4 @@
 
 ### UIGropu
 
-UI组，
+UI组，对UIForm进行分类，比如Common， Popup
