@@ -11,3 +11,8 @@
 ### UIGropu
 
 UI组，对UIForm进行分类，比如Common， Popup
+
+### UIManager
+
+UI管理类，提供打开、关闭UI等功能
+
