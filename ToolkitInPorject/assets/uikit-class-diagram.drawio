@@ -1,0 +1,271 @@
+<mxfile host="Electron" version="21.0.0">
+  <diagram id="uikit-class" name="UIKit 类图">
+    <mxGraphModel dx="1400" dy="900" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1000" pageHeight="780" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ============================
+             Title
+             ============================ -->
+        <mxCell id="title" value="UIKit 类图" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="14" width="160" height="28" as="geometry" />
+        </mxCell>
+
+        <!-- ============================
+             外部类：MonoBehaviour
+             ============================ -->
+        <mxCell id="h_mono" value="&lt;i&gt;[Unity]&lt;/i&gt;&#xa;&lt;b&gt;MonoBehaviour&lt;/b&gt;" style="text;html=1;strokeColor=#666666;fillColor=#f5f5f5;fontColor=#333333;align=center;verticalAlign=middle;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="350" y="55" width="200" height="44" as="geometry" />
+        </mxCell>
+
+        <!-- ============================
+             IUIForm (interface)
+             左列
+             ============================ -->
+        <!-- header -->
+        <mxCell id="h_iuiform" value="«interface»&#xa;IUIForm" style="text;html=1;strokeColor=#9673a6;fillColor=#e1d5e7;align=center;verticalAlign=middle;fontStyle=3;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="180" width="210" height="44" as="geometry" />
+        </mxCell>
+        <!-- fields -->
+        <mxCell id="f_iuiform" value="+ FormAssetName : string&#xa;+ Transform : Transform" style="text;html=0;strokeColor=#9673a6;fillColor=#f3eef8;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="224" width="210" height="40" as="geometry" />
+        </mxCell>
+        <!-- methods -->
+        <mxCell id="m_iuiform" value="+ OnInit(name, transform) : void&#xa;+ OnOpen(data) : void&#xa;+ OnClose() : void&#xa;+ OnRecycle() : void" style="text;html=0;strokeColor=#9673a6;fillColor=#f3eef8;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="264" width="210" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- ============================
+             UIFormBasic (abstract)
+             左列
+             ============================ -->
+        <!-- header -->
+        <mxCell id="h_basic" value="«abstract»&#xa;UIFormBasic" style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;align=center;verticalAlign=middle;fontStyle=3;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="410" width="210" height="44" as="geometry" />
+        </mxCell>
+        <!-- fields -->
+        <mxCell id="f_basic" value="+ FormAssetName : string&#xa;+ Transform : Transform&#xa;# _uiFormData : IUIFormData" style="text;html=0;strokeColor=#6c8ebf;fillColor=#dae8fc;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="454" width="210" height="52" as="geometry" />
+        </mxCell>
+        <!-- methods -->
+        <mxCell id="m_basic" value="+ OnInit() : void  «virtual»&#xa;+ OnOpen() : void  «virtual»&#xa;+ OnClose() : void  «virtual»&#xa;+ OnRecycle() : void  «virtual»" style="text;html=0;strokeColor=#6c8ebf;fillColor=#dae8fc;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="506" width="210" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- ============================
+             ShopForm (concrete, 示例)
+             左列
+             ============================ -->
+        <!-- annotation -->
+        <mxCell id="ann_shop" value="[UIForm(&quot;ShopForm&quot;, UILevel.Popup)]" style="text;html=0;strokeColor=none;fillColor=none;align=center;fontSize=10;fontColor=#d79b00;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="30" y="642" width="230" height="18" as="geometry" />
+        </mxCell>
+        <!-- header -->
+        <mxCell id="h_shop" value="ShopForm" style="text;html=1;strokeColor=#82b366;fillColor=#d5e8d4;align=center;verticalAlign=middle;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="660" width="210" height="36" as="geometry" />
+        </mxCell>
+        <!-- methods -->
+        <mxCell id="m_shop" value="+ OnOpen() : void&#xa;+ OnClose() : void" style="text;html=0;strokeColor=#82b366;fillColor=#d5e8d4;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="696" width="210" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- ============================
+             IUIFormData (interface)
+             中列
+             ============================ -->
+        <!-- header -->
+        <mxCell id="h_idata" value="«interface»&#xa;IUIFormData" style="text;html=1;strokeColor=#9673a6;fillColor=#e1d5e7;align=center;verticalAlign=middle;fontStyle=3;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="390" y="560" width="180" height="44" as="geometry" />
+        </mxCell>
+        <!-- body (empty) -->
+        <mxCell id="b_idata" value="(marker interface)" style="text;html=0;strokeColor=#9673a6;fillColor=#f3eef8;align=center;verticalAlign=middle;fontStyle=2;fontColor=#888888;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="390" y="604" width="180" height="28" as="geometry" />
+        </mxCell>
+
+        <!-- ============================
+             UIFormData (concrete)
+             中列
+             ============================ -->
+        <mxCell id="h_uifd" value="UIFormData" style="text;html=1;strokeColor=#82b366;fillColor=#d5e8d4;align=center;verticalAlign=middle;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="390" y="690" width="180" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="b_uifd" value="(empty)" style="text;html=0;strokeColor=#82b366;fillColor=#d5e8d4;align=center;verticalAlign=middle;fontStyle=2;fontColor=#888888;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="390" y="726" width="180" height="24" as="geometry" />
+        </mxCell>
+
+        <!-- ============================
+             SingletonManager<T> (abstract)
+             右列
+             ============================ -->
+        <mxCell id="h_single" value="«abstract»&#xa;SingletonManager&lt;T&gt;" style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;align=center;verticalAlign=middle;fontStyle=3;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="690" y="180" width="220" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="f_single" value="+ Instance : T  {static}" style="text;html=0;strokeColor=#6c8ebf;fillColor=#dae8fc;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="690" y="224" width="220" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="m_single" value="# Awake() : void" style="text;html=0;strokeColor=#6c8ebf;fillColor=#dae8fc;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="690" y="250" width="220" height="26" as="geometry" />
+        </mxCell>
+
+        <!-- ============================
+             UIManager
+             右列
+             ============================ -->
+        <mxCell id="h_uimgr" value="UIManager" style="text;html=1;strokeColor=#82b366;fillColor=#d5e8d4;align=center;verticalAlign=middle;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="690" y="360" width="220" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="f_uimgr" value="- _activeForms : Dictionary&lt;string, IUIForm&gt;&#xa;- _cachedForms : Dictionary&lt;string, IUIForm&gt;&#xa;- _levelRoots : Dictionary&lt;UILevel, Transform&gt;&#xa;- _popupStack : List&lt;string&gt;" style="text;html=0;strokeColor=#82b366;fillColor=#d5e8d4;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="690" y="396" width="220" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="m_uimgr" value="+ OpenUIForm(name, level, data) : void&#xa;+ OpenUIForm&lt;T&gt;(data) : void&#xa;+ CloseUIForm(form : IUIForm) : void&#xa;+ CloseTopForm() : void&#xa;+ GetUIForm&lt;T&gt;() : T&#xa;+ ClearCache() : void" style="text;html=0;strokeColor=#82b366;fillColor=#d5e8d4;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="690" y="462" width="220" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- ============================
+             UILevel (enum)
+             右列
+             ============================ -->
+        <mxCell id="h_level" value="«enum»&#xa;UILevel" style="text;html=1;strokeColor=#d6b656;fillColor=#fff2cc;align=center;verticalAlign=middle;fontStyle=3;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="690" y="620" width="180" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="b_level" value="Normal&#xa;Popup&#xa;Item" style="text;html=0;strokeColor=#d6b656;fillColor=#fff2cc;align=center;verticalAlign=top;spacingTop=4;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="690" y="664" width="180" height="52" as="geometry" />
+        </mxCell>
+
+        <!-- ============================
+             UIFormAttribute
+             中列下方
+             ============================ -->
+        <mxCell id="h_attr" value="UIFormAttribute" style="text;html=1;strokeColor=#d79b00;fillColor=#ffe6cc;align=center;verticalAlign=middle;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="390" y="410" width="210" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="f_attr" value="+ AssetName : string&#xa;+ Level : UILevel" style="text;html=0;strokeColor=#d79b00;fillColor=#ffe6cc;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="390" y="446" width="210" height="38" as="geometry" />
+        </mxCell>
+        <mxCell id="m_attr" value="UIFormAttribute(assetName, level)" style="text;html=0;strokeColor=#d79b00;fillColor=#ffe6cc;align=left;verticalAlign=top;spacingLeft=6;spacingTop=4;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="390" y="484" width="210" height="26" as="geometry" />
+        </mxCell>
+
+        <!-- ============================================================
+             ARROWS
+             ============================================================ -->
+
+        <!-- 继承 Inheritance (solid line, hollow triangle, 箭头指向父类) -->
+
+        <!-- UIFormBasic ──▷ MonoBehaviour -->
+        <mxCell id="e_basic_mono" value="" style="endArrow=block;endFill=0;html=1;strokeWidth=2;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.2;entryY=1;entryDx=0;entryDy=0;" edge="1" source="h_basic" target="h_mono" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- SingletonManager ──▷ MonoBehaviour -->
+        <mxCell id="e_single_mono" value="" style="endArrow=block;endFill=0;html=1;strokeWidth=2;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.8;entryY=1;entryDx=0;entryDy=0;" edge="1" source="h_single" target="h_mono" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ShopForm ──▷ UIFormBasic -->
+        <mxCell id="e_shop_basic" value="" style="endArrow=block;endFill=0;html=1;strokeWidth=2;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" source="h_shop" target="m_basic" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- UIManager ──▷ SingletonManager -->
+        <mxCell id="e_mgr_single" value="" style="endArrow=block;endFill=0;html=1;strokeWidth=2;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" source="h_uimgr" target="m_single" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 实现 Realization (dashed line, hollow triangle) -->
+
+        <!-- UIFormBasic ··▷ IUIForm -->
+        <mxCell id="e_basic_iform" value="" style="dashed=1;endArrow=block;endFill=0;html=1;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="f_basic" target="m_iuiform" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- UIFormData ··▷ IUIFormData -->
+        <mxCell id="e_uifd_idata" value="" style="dashed=1;endArrow=block;endFill=0;html=1;strokeWidth=2;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" source="h_uifd" target="b_idata" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 依赖 Dependency (dashed, open arrow) -->
+
+        <!-- UIManager ··> IUIForm (uses in _activeForms/_cachedForms) -->
+        <mxCell id="e_mgr_iform" value="uses" style="dashed=1;endArrow=open;endSize=8;html=1;fontSize=10;fontStyle=2;strokeColor=#9673a6;fontColor=#9673a6;exitX=0;exitY=0.3;exitDx=0;exitDy=0;entryX=1;entryY=0.8;entryDx=0;entryDy=0;" edge="1" source="f_uimgr" target="m_iuiform" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="620" y="415" />
+              <mxPoint x="620" y="316" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- UIManager ··> UILevel (uses in _levelRoots) -->
+        <mxCell id="e_mgr_level" value="uses" style="dashed=1;endArrow=open;endSize=8;html=1;fontSize=10;fontStyle=2;strokeColor=#d6b656;fontColor=#d6b656;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="m_uimgr" target="h_level" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- UIManager ··> IUIFormData (parameter) -->
+        <mxCell id="e_mgr_idata" value="uses" style="dashed=1;endArrow=open;endSize=8;html=1;fontSize=10;fontStyle=2;strokeColor=#9673a6;fontColor=#9673a6;exitX=0;exitY=0.7;exitDx=0;exitDy=0;entryX=1;entryY=0.2;entryDx=0;entryDy=0;" edge="1" source="m_uimgr" target="b_idata" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="630" y="490" />
+              <mxPoint x="630" y="570" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- UIFormAttribute ··> UILevel -->
+        <mxCell id="e_attr_level" value="" style="dashed=1;endArrow=open;endSize=8;html=1;strokeColor=#d6b656;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;" edge="1" source="f_attr" target="h_level" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- UIFormBasic ··> IUIFormData (stores _uiFormData) -->
+        <mxCell id="e_basic_idata" value="" style="dashed=1;endArrow=open;endSize=8;html=1;strokeColor=#9673a6;exitX=1;exitY=0.6;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="f_basic" target="b_idata" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="290" y="488" />
+              <mxPoint x="290" y="588" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ShopForm ··> UIFormAttribute (annotated with) -->
+        <mxCell id="e_shop_attr" value="«annotated»" style="dashed=1;endArrow=open;endSize=8;html=1;fontSize=10;fontStyle=2;strokeColor=#d79b00;fontColor=#d79b00;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.8;entryDx=0;entryDy=0;" edge="1" source="h_shop" target="m_attr" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="310" y="678" />
+              <mxPoint x="355" y="678" />
+              <mxPoint x="355" y="504" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ============================
+             图例 Legend
+             ============================ -->
+        <mxCell id="leg_title" value="图例" style="text;html=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="760" width="40" height="18" as="geometry" />
+        </mxCell>
+
+        <mxCell id="leg_inh" value="" style="endArrow=block;endFill=0;html=1;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="90" y="769" as="sourcePoint" />
+            <mxPoint x="150" y="769" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="leg_inh_t" value="继承 / 实现" style="text;html=1;strokeColor=none;fillColor=none;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="155" y="760" width="90" height="18" as="geometry" />
+        </mxCell>
+
+        <mxCell id="leg_dep" value="" style="dashed=1;endArrow=open;endSize=8;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="310" y="769" as="sourcePoint" />
+            <mxPoint x="370" y="769" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="leg_dep_t" value="依赖 / 使用" style="text;html=1;strokeColor=none;fillColor=none;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="375" y="760" width="90" height="18" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

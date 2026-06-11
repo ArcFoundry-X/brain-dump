@@ -1,0 +1,101 @@
+<mxfile host="Electron" version="21.0.0">
+  <diagram id="mvc-architecture" name="MVC 架构">
+    <mxGraphModel dx="1200" dy="800" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="900" pageHeight="400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="MVC 架构" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="12" width="200" height="28" as="geometry" />
+        </mxCell>
+
+        <!-- Section 1 label -->
+        <mxCell id="sec1" value="▌ 分层结构" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=12;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="40" y="48" width="140" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- Model (yellow) -->
+        <mxCell id="mh" value="Model" style="text;html=1;strokeColor=#d6b656;fillColor=#fff2cc;align=center;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="78" width="220" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="mb" value="存数据 + 业务规则&#xa;纯 C# 类，可单元测试&#xa;&#xa;+ Hp, Gold, Level&#xa;+ TrySpend(cost) : bool&#xa;+ TakeDamage(damage) : void" style="text;html=0;strokeColor=#d6b656;fillColor=#fffde7;align=left;verticalAlign=top;spacingLeft=8;spacingTop=5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="112" width="220" height="96" as="geometry" />
+        </mxCell>
+
+        <!-- Controller (blue) -->
+        <mxCell id="ch" value="Controller" style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;align=center;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="78" width="220" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="cb" value="持有 Model + View 引用&#xa;协调两者，绑定事件&#xa;&#xa;CharacterPanelForm&#xa;+ OnInit()  绑按钮&#xa;+ OnOpen()  触发首次刷新&#xa;+ OnBuyClicked()  手动刷新" style="text;html=0;strokeColor=#6c8ebf;fillColor=#e8f4fc;align=left;verticalAlign=top;spacingLeft=8;spacingTop=5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="340" y="112" width="220" height="96" as="geometry" />
+        </mxCell>
+
+        <!-- View (green) -->
+        <mxCell id="vh" value="View" style="text;html=1;strokeColor=#82b366;fillColor=#d5e8d4;align=center;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="78" width="220" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="vb" value="只持有 UI 元素&#xa;只提供 Refresh 方法&#xa;&#xa;CharacterPanelView&#xa;+ _hpBar, _hpText, _goldText&#xa;+ Refresh(CharacterModel)" style="text;html=0;strokeColor=#82b366;fillColor=#eafaea;align=left;verticalAlign=top;spacingLeft=8;spacingTop=5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="640" y="112" width="220" height="96" as="geometry" />
+        </mxCell>
+
+        <!-- Controller → Model -->
+        <mxCell id="ecm" value="持有引用 / 调用方法" style="endArrow=open;endSize=8;html=1;fontSize=10;fontStyle=2;strokeColor=#d6b656;fontColor=#7d6300;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="ch" target="mh" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Controller → View -->
+        <mxCell id="ecv" value="持有引用 / 调用 Refresh()" style="endArrow=open;endSize=8;html=1;fontSize=10;fontStyle=2;strokeColor=#82b366;fontColor=#2d7600;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="ch" target="vh" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Divider -->
+        <mxCell id="div" value="" style="line;html=1;strokeColor=#cccccc;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="40" y="224" width="820" height="10" as="geometry" />
+        </mxCell>
+
+        <!-- Section 2 label -->
+        <mxCell id="sec2" value="▌ 数据流" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=12;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="40" y="240" width="120" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- Flow nodes -->
+        <mxCell id="f1" value="用户点击" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="70" y="274" width="120" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="f2" value="Controller&#xa;.OnBuyClicked()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="228" y="274" width="130" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="f3" value="Model&#xa;.TrySpend()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="396" y="274" width="130" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="f4" value="View&#xa;.Refresh(model)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="564" y="274" width="130" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="f5" value="UI 更新" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="732" y="274" width="100" height="44" as="geometry" />
+        </mxCell>
+
+        <!-- Flow arrows -->
+        <mxCell id="ef12" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#555555;" edge="1" source="f1" target="f2" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ef23" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#555555;" edge="1" source="f2" target="f3" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ef34" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#555555;" edge="1" source="f3" target="f4" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ef45" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#555555;" edge="1" source="f4" target="f5" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Note -->
+        <mxCell id="note" value="Controller 在两次调用之间手动传话；数据变化不会自动反映到 View" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=11;fontColor=#888888;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="120" y="328" width="660" height="20" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

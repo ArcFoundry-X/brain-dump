@@ -1,0 +1,116 @@
+<mxfile host="Electron" version="21.0.0">
+  <diagram id="uimanager-arch" name="UIManager 架构图">
+    <mxGraphModel dx="1200" dy="800" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="900" pageHeight="620" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="UIManager 架构图" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=15;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="15" width="240" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- 调用方 -->
+        <mxCell id="caller" value="调用方" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="60" width="140" height="44" as="geometry" />
+        </mxCell>
+
+        <!-- UIManager 容器 (swimlane) -->
+        <mxCell id="uimgr" value="UIManager" style="swimlane;fontStyle=1;fontSize=13;fillColor=#dae8fc;strokeColor=#6c8ebf;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="60" y="150" width="680" height="160" as="geometry" />
+        </mxCell>
+
+        <!-- _activeForms (inside UIManager) -->
+        <mxCell id="active" value="&lt;b&gt;_activeForms&lt;/b&gt;&#xa;当前可见界面" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="uimgr">
+          <mxGeometry x="30" y="55" width="170" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- _cachedForms (inside UIManager) -->
+        <mxCell id="cached" value="&lt;b&gt;_cachedForms&lt;/b&gt;&#xa;已实例化，暂时隐藏" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="uimgr">
+          <mxGeometry x="255" y="55" width="170" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- _levelRoots (inside UIManager) -->
+        <mxCell id="levels" value="&lt;b&gt;_levelRoots&lt;/b&gt;&#xa;Canvas 分层节点" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="uimgr">
+          <mxGeometry x="480" y="55" width="170" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- 可见界面示例：ShopForm -->
+        <mxCell id="shopform" value="ShopForm&#xa;✓ 可见" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="380" width="110" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- 可见界面示例：HUDForm -->
+        <mxCell id="hudform" value="HUDForm&#xa;✓ 可见" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="200" y="380" width="110" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- 缓存界面示例：BagForm -->
+        <mxCell id="bagform" value="BagForm&#xa;— 隐藏" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#666666;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="340" y="380" width="110" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- 层级节点：Item（最顶层） -->
+        <mxCell id="item_layer" value="Item 层（最顶层）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="530" y="360" width="160" height="36" as="geometry" />
+        </mxCell>
+
+        <!-- 层级节点：Popup -->
+        <mxCell id="popup_layer" value="Popup 层" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="530" y="406" width="160" height="36" as="geometry" />
+        </mxCell>
+
+        <!-- 层级节点：Normal（最底层） -->
+        <mxCell id="normal_layer" value="Normal 层（最底层）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="530" y="452" width="160" height="36" as="geometry" />
+        </mxCell>
+
+        <!-- IUIForm 标签 -->
+        <mxCell id="iform_label" value="（均实现 IUIForm 接口）" style="text;html=1;strokeColor=none;fillColor=none;fontSize=11;fontColor=#666666;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="80" y="445" width="220" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- ===== 边 ===== -->
+
+        <!-- 调用方 → UIManager -->
+        <mxCell id="e_call" value="OpenUIForm&lt;T&gt;() / CloseUIForm()" style="edgeStyle=orthogonalEdgeStyle;html=1;fontSize=11;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="caller" target="uimgr" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- _activeForms → ShopForm -->
+        <mxCell id="e_active1" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#82b366;exitX=0.3;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="active" target="shopform" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- _activeForms → HUDForm -->
+        <mxCell id="e_active2" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#82b366;exitX=0.7;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="active" target="hudform" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- _cachedForms → BagForm -->
+        <mxCell id="e_cached" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#d6b656;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="cached" target="bagform" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- _levelRoots → 层级节点组 -->
+        <mxCell id="e_levels" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeColor=#d79b00;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" source="levels" target="item_layer" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 层级节点之间的顺序连线（虚线，表示 z 顺序） -->
+        <mxCell id="e_z1" value="" style="endArrow=none;dashed=1;strokeColor=#d79b00;html=1;" edge="1" source="item_layer" target="popup_layer" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_z2" value="" style="endArrow=none;dashed=1;strokeColor=#d79b00;html=1;" edge="1" source="popup_layer" target="normal_layer" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 层级顺序说明 -->
+        <mxCell id="z_label" value="Hierarchy 顺序 = 渲染层级" style="text;html=1;strokeColor=none;fillColor=none;fontSize=11;fontColor=#d79b00;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="514" y="500" width="200" height="22" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,121 @@
+<mxfile host="Electron" version="21.0.0">
+  <diagram id="mvvm-architecture" name="MVVM 架构">
+    <mxGraphModel dx="1200" dy="800" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="900" pageHeight="420" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="title" value="MVVM 架构" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="12" width="200" height="28" as="geometry" />
+        </mxCell>
+
+        <!-- Section 1 label -->
+        <mxCell id="sec1" value="▌ 分层结构" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=12;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="40" y="48" width="140" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- Model (orange) -->
+        <mxCell id="mh" value="Model" style="text;html=1;strokeColor=#d6b656;fillColor=#ffe6cc;align=center;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="78" width="220" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="mb" value="ReactiveProperty&lt;T&gt; 字段&#xa;业务规则方法&#xa;&#xa;+ Hp : ReactiveProperty&lt;int&gt;&#xa;+ Gold : ReactiveProperty&lt;int&gt;&#xa;+ TrySpend() / TakeDamage()" style="text;html=0;strokeColor=#d6b656;fillColor=#fff8f0;align=left;verticalAlign=top;spacingLeft=8;spacingTop=5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="112" width="220" height="96" as="geometry" />
+        </mxCell>
+
+        <!-- ViewModel (blue) -->
+        <mxCell id="vmh" value="ViewModel" style="text;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;align=center;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="78" width="220" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="vmb" value="持有 Model，不持有 View&#xa;暴露只读响应式属性&#xa;&#xa;+ HpRatio  : IReadOnlyReactiveProperty&#xa;+ HpText   : IReadOnlyReactiveProperty&#xa;+ GoldText : IReadOnlyReactiveProperty&#xa;+ Buy(cost) : void" style="text;html=0;strokeColor=#6c8ebf;fillColor=#e8f4fc;align=left;verticalAlign=top;spacingLeft=8;spacingTop=5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="340" y="112" width="220" height="96" as="geometry" />
+        </mxCell>
+
+        <!-- View (green) -->
+        <mxCell id="vh" value="View" style="text;html=1;strokeColor=#82b366;fillColor=#d5e8d4;align=center;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="78" width="220" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="vb" value="订阅 ViewModel，不持有 Model&#xa;CompositeDisposable 管生命周期&#xa;&#xa;CharacterPanelForm&#xa;+ _hpBar, _hpText, _goldText&#xa;+ OnOpen()  Subscribe&#xa;+ OnClose()  Dispose" style="text;html=0;strokeColor=#82b366;fillColor=#eafaea;align=left;verticalAlign=top;spacingLeft=8;spacingTop=5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="640" y="112" width="220" height="96" as="geometry" />
+        </mxCell>
+
+        <!-- ViewModel → Model (holds) -->
+        <mxCell id="evmm" value="持有引用 / 调用方法" style="endArrow=open;endSize=8;html=1;fontSize=10;fontStyle=2;strokeColor=#d6b656;fontColor=#7d6300;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="vmh" target="mh" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- View → ViewModel (subscribes, dashed) -->
+        <mxCell id="evvm" value="Subscribe 订阅" style="dashed=1;endArrow=open;endSize=8;html=1;fontSize=10;fontStyle=2;strokeColor=#6c8ebf;fontColor=#23527c;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" source="vh" target="vmh" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- No-arrow note -->
+        <mxCell id="nonote" value="ViewModel 不持有 View 引用" style="text;html=1;strokeColor=#c00000;fillColor=#fff0f0;align=center;fontSize=10;fontStyle=2;fontColor=#c00000;" vertex="1" parent="1">
+          <mxGeometry x="340" y="216" width="220" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Divider -->
+        <mxCell id="div" value="" style="line;html=1;strokeColor=#cccccc;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="40" y="244" width="820" height="10" as="geometry" />
+        </mxCell>
+
+        <!-- Section 2 label -->
+        <mxCell id="sec2" value="▌ 数据流" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=12;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="40" y="260" width="120" height="22" as="geometry" />
+        </mxCell>
+
+        <!-- Flow nodes -->
+        <mxCell id="f1" value="用户点击" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="70" y="292" width="120" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="f2" value="ViewModel&#xa;.Buy()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="228" y="292" width="130" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="f3" value="Model.Gold&#xa;.Value--" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d6b656;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="396" y="292" width="130" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="f4" value="订阅链&#xa;自动触发" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="564" y="292" width="130" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="f5" value="UI 更新" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="732" y="292" width="100" height="44" as="geometry" />
+        </mxCell>
+
+        <!-- Flow arrows -->
+        <mxCell id="ef12" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#c00000;" edge="1" source="f1" target="f2" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ef23" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#c00000;" edge="1" source="f2" target="f3" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ef34" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#0070c0;" edge="1" source="f3" target="f4" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ef45" value="" style="endArrow=block;endFill=1;html=1;strokeColor=#0070c0;" edge="1" source="f4" target="f5" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="leg1" value="" style="endArrow=block;endFill=1;strokeColor=#c00000;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="120" y="362" as="sourcePoint" />
+            <mxPoint x="170" y="362" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="leg1t" value="用户输入 / 方法调用" style="text;html=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="176" y="352" width="150" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="leg2" value="" style="endArrow=block;endFill=1;strokeColor=#0070c0;html=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="410" y="362" as="sourcePoint" />
+            <mxPoint x="460" y="362" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="leg2t" value="数据变化 / 自动响应" style="text;html=1;strokeColor=none;fillColor=none;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="466" y="352" width="150" height="20" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

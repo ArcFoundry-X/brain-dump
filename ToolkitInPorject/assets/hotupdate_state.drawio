@@ -1,0 +1,147 @@
+<mxfile host="Electron" version="21.0.0">
+  <diagram id="state-diagram" name="HotUpdateState 状态机">
+    <mxGraphModel dx="1400" dy="800" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1100" pageHeight="500" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title -->
+        <mxCell id="t1" value="HotUpdateState 状态机" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=15;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="12" width="300" height="28" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Happy Path States (top row) ===== -->
+
+        <!-- Idle -->
+        <mxCell id="idle" value="Idle" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="160" width="90" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- GettingVersion -->
+        <mxCell id="gv" value="Getting&#xa;Version" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="165" y="160" width="110" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- UpdatingManifest -->
+        <mxCell id="um" value="Updating&#xa;Manifest" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="325" y="160" width="110" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- CreatingDownloader -->
+        <mxCell id="cd" value="Creating&#xa;Downloader" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="485" y="160" width="115" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Downloading -->
+        <mxCell id="dl" value="Download&#xa;ing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="650" y="160" width="110" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Done -->
+        <mxCell id="done" value="Done" style="ellipse;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="810" y="160" width="90" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- ===== Transitions (happy path) ===== -->
+
+        <!-- Idle → GettingVersion -->
+        <mxCell id="e1" value="RunAsync()" style="endArrow=block;endFill=1;strokeColor=#6c8ebf;fontColor=#6c8ebf;fontSize=10;" edge="1" source="idle" target="gv" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- GettingVersion → UpdatingManifest -->
+        <mxCell id="e2" value="版本号获取成功" style="endArrow=block;endFill=1;strokeColor=#6c8ebf;fontColor=#6c8ebf;fontSize=10;" edge="1" source="gv" target="um" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- UpdatingManifest → CreatingDownloader -->
+        <mxCell id="e3" value="清单加载完成" style="endArrow=block;endFill=1;strokeColor=#6c8ebf;fontColor=#6c8ebf;fontSize=10;" edge="1" source="um" target="cd" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- CreatingDownloader → Downloading -->
+        <mxCell id="e4" value="NeedUpdate=true" style="endArrow=block;endFill=1;strokeColor=#6c8ebf;fontColor=#6c8ebf;fontSize=10;" edge="1" source="cd" target="dl" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Downloading → Done -->
+        <mxCell id="e5" value="下载完成" style="endArrow=block;endFill=1;strokeColor=#82b366;fontColor=#82b366;fontSize=10;" edge="1" source="dl" target="done" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- CreatingDownloader → Done (shortcut: NeedUpdate=false) -->
+        <mxCell id="e4b" value="NeedUpdate=false&#xa;(缓存已最新)" style="endArrow=block;endFill=1;strokeColor=#82b366;fontColor=#82b366;fontSize=10;curved=1;" edge="1" source="cd" target="done" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="542" y="90" />
+              <mxPoint x="855" y="90" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ===== Error State ===== -->
+        <mxCell id="err" value="Error" style="ellipse;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="440" y="310" width="90" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Error transitions from each step -->
+        <mxCell id="e_gv" value="exception" style="endArrow=open;endFill=0;strokeColor=#b85450;fontColor=#b85450;fontSize=10;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" source="gv" target="err" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="220" y="290" />
+              <mxPoint x="485" y="290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_um" value="exception" style="endArrow=open;endFill=0;strokeColor=#b85450;fontColor=#b85450;fontSize=10;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" source="um" target="err" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="380" y="290" />
+              <mxPoint x="485" y="290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_dl" value="exception" style="endArrow=open;endFill=0;strokeColor=#b85450;fontColor=#b85450;fontSize=10;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" source="dl" target="err" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="705" y="290" />
+              <mxPoint x="485" y="290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Error → Idle (retry) -->
+        <mxCell id="e_retry" value="再次调用 RunAsync()（幂等）" style="endArrow=block;endFill=1;strokeColor=#b85450;fontColor=#b85450;fontSize=10;dashed=1;" edge="1" source="err" target="idle" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="485" y="390" />
+              <mxPoint x="75" y="390" />
+              <mxPoint x="75" y="212" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="leg1" value="正常流程" style="endArrow=block;endFill=1;strokeColor=#6c8ebf;fontColor=#333333;fontSize=11;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="660" y="340" as="sourcePoint" />
+            <mxPoint x="700" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="leg1t" value="正常流程" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="706" y="330" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="leg2" value="异常 / 重试" style="endArrow=open;endFill=0;strokeColor=#b85450;fontColor=#333333;fontSize=11;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="660" y="365" as="sourcePoint" />
+            <mxPoint x="700" y="365" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="leg2t" value="异常 / 重试" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="706" y="355" width="80" height="20" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
